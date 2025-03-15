@@ -11,6 +11,8 @@ class Player {
   int maxReloadTime;
   float currentReloadTime;
   float bulletSpeed;
+  int maxHealth;
+  int currentHealth;
   Player(float x, float y) {
     leftActionCharacters = new IntList();
     leftActionCharacters.append('a');
@@ -27,45 +29,55 @@ class Player {
     size = 25;
     this.x = x;
     this.y = y;
-    speed = 1;
+    speed = 5;
     attackSpeed = 0.5;
-    maxReloadTime = 100;
+    maxReloadTime = 5;
     currentReloadTime = maxReloadTime;
     bulletSpeed = 1;
+    maxHealth = 10;
+    currentHealth = maxHealth;
   }
 
-  void update()  {
-    if(movingUp && movingDown) {
+  void update() {
+    if (movingUp && movingDown) {
       vy = 0;
-    } else if(movingUp) {
+    } else if (movingUp) {
       vy = -speed;
-    } else if(movingDown) {
+    } else if (movingDown) {
       vy = speed;
     } else {
       vy = 0;
     }
-    
-    if(movingLeft && movingRight) {
+
+    if (movingLeft && movingRight) {
       vx = 0;
-    } else if(movingLeft) {
+    } else if (movingLeft) {
       vx = -speed;
-    } else if(movingRight) {
+    } else if (movingRight) {
       vx = speed;
     } else {
       vx = 0;
     }
-    
+
     x += vx;
     y += vy;
-    
+
     currentReloadTime -= 1 * attackSpeed;
   }
   void render() {
+    noStroke();
+    fill(255, 0, 0);
+    rect(x-50 + size, y+5, 100-size, 10);
+    fill(0, 255, 0);
+    rect(x-50 + size, y+5, map(currentHealth, 0, maxHealth, 0, 100)-size, 10);
+
+    fill(255);
     triangle(x, y, x + size/2, y - size, x + size, y);
   }
 
   void keyPressed(char key) {
     if (player1.leftActionCharacters.hasValue(key)) {
+      currentHealth --;
       movingLeft = true;
     } else if (player1.upActionCharacters.hasValue(key)) {
       movingUp = true;

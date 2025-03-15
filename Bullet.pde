@@ -1,20 +1,20 @@
 class Bullet {
   int size = 5;
-  float x, y, vx, vy;
-  float speed;
-  Bullet(float x, float y, float vy) {
-    this.x = x;
-    this.y = y;
-    // Bullet is moving up
-    this.vy = -1 * vy;
+  PVector location;
+  PVector velocity;
+  float speed = -5 ;
+  Bullet(float x, float y, float vy, float angle) {
+    location = new PVector(x, y);
+    velocity = new PVector(0, vy * speed);
+    velocity.rotate(angle * PI / 180);
   }
 
-  void update()  {    
-    x += vx;
-    y += vy;
+  void update() {
+    location.add(velocity);
   }
+
   void render() {
     fill(255);
-    ellipse(x, y, size, size);
+    ellipse(location.x, location.y, size, size);
   }
 }
