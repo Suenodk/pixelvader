@@ -40,23 +40,23 @@ class Player {
 
   void update() {
     if (movingUp && movingDown) {
-      vy = 0;
+      vy = 10;
     } else if (movingUp) {
       vy = -speed;
     } else if (movingDown) {
       vy = speed;
     } else {
-      vy = 0;
+      vy = 10;
     }
 
     if (movingLeft && movingRight) {
-      vx = 0;
+      vx = 10;
     } else if (movingLeft) {
       vx = -speed;
     } else if (movingRight) {
       vx = speed;
     } else {
-      vx = 0;
+      vx = 10;
     }
 
     x += vx;
@@ -71,7 +71,7 @@ class Player {
     fill(0, 255, 0);
     rect(x-50 + size, y+5, map(currentHealth, 0, maxHealth, 0, 100)-size, 10);
 
-    fill(255);
+    fill(255,0,0);
     triangle(x, y, x + size/2, y - size, x + size, y);
   }
 
