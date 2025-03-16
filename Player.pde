@@ -33,30 +33,30 @@ class Player {
     attackSpeed = 0.5;
     maxReloadTime = 5;
     currentReloadTime = maxReloadTime;
-    bulletSpeed = 1;
+    bulletSpeed = 2;
     maxHealth = 10;
     currentHealth = maxHealth;
   }
 
   void update() {
     if (movingUp && movingDown) {
-      vy = 10;
+      vy = 0;
     } else if (movingUp) {
       vy = -speed;
     } else if (movingDown) {
       vy = speed;
     } else {
-      vy = 10;
+      vy = 0;
     }
 
     if (movingLeft && movingRight) {
-      vx = 10;
+      vx = 0;
     } else if (movingLeft) {
       vx = -speed;
     } else if (movingRight) {
       vx = speed;
     } else {
-      vx = 10;
+      vx = 0;
     }
 
     x += vx;
