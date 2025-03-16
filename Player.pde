@@ -77,7 +77,6 @@ class Player {
 
   void keyPressed(char key) {
     if (player1.leftActionCharacters.hasValue(key)) {
-      currentHealth --;
       movingLeft = true;
     } else if (player1.upActionCharacters.hasValue(key)) {
       movingUp = true;
