@@ -2,7 +2,7 @@ class Bullet {
   int size = 5;
   PVector location;
   PVector velocity;
-  float speed = -5 ;
+  float speed = -5;
   Bullet(float x, float y, float vy, float angle) {
     location = new PVector(x, y);
     velocity = new PVector(0, vy * speed);
