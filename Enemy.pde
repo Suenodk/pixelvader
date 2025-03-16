@@ -9,7 +9,7 @@ class Enemy {
     this.y = y;
     this.vy = 1;
     this.size = 25;
-    this.maxHealth = 100;
+    this.maxHealth = 10;
     this.currentHealth = this.maxHealth;
   }
 
@@ -21,9 +21,9 @@ class Enemy {
   void render() {
     noStroke();
     fill(255, 0, 0);
-    rect(x-50-size/2 + size, y+size/2 + 5, 100, 10);
+    rect(x-50, y+size/2 + 5, 100, 10);
     fill(0, 255, 0);
-    rect(x-50 - size/2 + size, y+size/2+5, map(currentHealth, 0, maxHealth, 0, 100), 10);
+    rect(x-50, y+size/2+5, map(currentHealth, 0, maxHealth, 0, 100), 10);
 
     fill(255);
     ellipse(x, y, size, size);
